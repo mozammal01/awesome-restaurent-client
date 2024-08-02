@@ -5,13 +5,13 @@ const NavBar = () => {
   const NavLinks = <>
     <NavLink to="/"><li><a>Home</a></li></NavLink>
     <NavLink to="/contuctUs"><li><a>Contuct Us</a></li></NavLink>
-    <NavLink to="/dashboard"><li><a>Dashboard</a></li></NavLink>
-    <NavLink to="/ourMenu"><li><a>Our Menu</a></li></NavLink>
+    <NavLink to="/order"><li><a>Order</a></li></NavLink>
+    <NavLink to="/menu"><li><a>Our Menu</a></li></NavLink>
     <NavLink to="/ourShop"><li><a>Our Shop</a></li></NavLink>
 
   </>
   return (
-    <div className="navbar max-w-screen-xl bg-black bg-opacity-20 text-white fixed z-10">
+    <div className="navbar max-w-screen-xl bg-black bg-opacity-50 text-white fixed z-10">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -34,9 +34,9 @@ const NavBar = () => {
             {NavLinks}
           </ul>
         </div>
-        <Link to='/'>
-          <span className="items-center">
-            <p className="font-semibold text-lg">Bistro Boss</p>
+        <Link to='/' className="ml-8">
+          <span>
+            <p className="font-semibold text-lg">Awesome</p>
             <p className="text-lg my-[-8px]">Restaurant</p>
           </span>
         </Link>

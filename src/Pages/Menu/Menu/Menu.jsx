@@ -57,7 +57,7 @@ const Menu = () => {
         <MenuCategory
           items={dessert}
           backgroundImage={desserImg}
-          title="Dessert"
+          title="dessert"
           description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad enim nulla, fugiat, necessitatibus unde, suscipit similique saepe ullam veritatis doloribus voluptatem. Sapiente nesciunt rerum sint rem, veritatis dolores nulla ipsa!'
         ></MenuCategory>
       </div>
@@ -67,7 +67,7 @@ const Menu = () => {
         <MenuCategory
           items={pizza}
           backgroundImage={pizzaImg}
-          title="Pizza"
+          title="pizza"
           description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad enim nulla, fugiat, necessitatibus unde, suscipit similique saepe ullam veritatis doloribus voluptatem. Sapiente nesciunt rerum sint rem, veritatis dolores nulla ipsa!'
         ></MenuCategory>
       </div>
@@ -77,7 +77,7 @@ const Menu = () => {
         <MenuCategory
           items={salad}
           backgroundImage={saladImg}
-          title="Salad"
+          title="salad"
           description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad enim nulla, fugiat, necessitatibus unde, suscipit similique saepe ullam veritatis doloribus voluptatem. Sapiente nesciunt rerum sint rem, veritatis dolores nulla ipsa!'
         ></MenuCategory>
       </div>
@@ -87,7 +87,7 @@ const Menu = () => {
         <MenuCategory
           items={soup}
           backgroundImage={soupImg}
-          title="Soup"
+          title="soup"
           description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad enim nulla, fugiat, necessitatibus unde, suscipit similique saepe ullam veritatis doloribus voluptatem. Sapiente nesciunt rerum sint rem, veritatis dolores nulla ipsa!'
         ></MenuCategory>
       </div>

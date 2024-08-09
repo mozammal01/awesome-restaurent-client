@@ -1,13 +1,31 @@
 import { Link, NavLink } from "react-router-dom";
-import App from "../../../App";
+import useAuth from "../../../hooks/useAuth";
+import Theme from "../../../Theme";
+import { ShoppingCart } from "lucide-react";
 
 const NavBar = () => {
+
+  const { user, logOut } = useAuth();
+
+  // 
+  const handleLogOut = () => {
+    logOut()
+      .then(() => { })
+      .catch(err => {
+        console.error(err);
+      })
+  }
+
   const NavLinks = <>
     <NavLink to="/"><li><a>Home</a></li></NavLink>
     <NavLink to="/contuctUs"><li><a>Contuct Us</a></li></NavLink>
     <NavLink to="/order/dessert"><li><a>Order</a></li></NavLink>
     <NavLink to="/menu"><li><a>Our Menu</a></li></NavLink>
     <NavLink to="/ourShop"><li><a>Our Shop</a></li></NavLink>
+    <NavLink to="/ourShop"><li><button className="btn btn-outline text-white">
+      <ShoppingCart />
+      <div className="badge badge-secondary">+0</div>
+    </button></li></NavLink>
 
   </>
   return (
@@ -46,8 +64,15 @@ const NavBar = () => {
           {NavLinks}
         </ul>
         <div className="gap-6 flex items-center">
-          <App></App>
-          <a className="btn">Login</a>
+          <Theme></Theme>
+          {
+            user ?
+              <>
+                <p>{user?.displayName}</p>
+                <button onClick={handleLogOut} className="btn">Log Out</button>
+              </> :
+              <Link to='/login'><p className="btn">Login</p></Link>
+          }
         </div>
       </div>
     </div>

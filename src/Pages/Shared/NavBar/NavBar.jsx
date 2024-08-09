@@ -2,8 +2,11 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import Theme from "../../../Theme";
 import { ShoppingCart } from "lucide-react";
+import useCart from "../../../hooks/useCart";
 
 const NavBar = () => {
+
+  const [cart] = useCart();
 
   const { user, logOut } = useAuth();
 
@@ -24,7 +27,7 @@ const NavBar = () => {
     <NavLink to="/ourShop"><li><a>Our Shop</a></li></NavLink>
     <NavLink to="/ourShop"><li><button className="btn btn-outline text-white">
       <ShoppingCart />
-      <div className="badge badge-secondary">+0</div>
+      <div className="badge badge-secondary">+{cart?.length}</div>
     </button></li></NavLink>
 
   </>

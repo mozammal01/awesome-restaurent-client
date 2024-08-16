@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import useAuth from '../../hooks/useAuth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
+import SocialLogin from '../../components/SocialLogin/SocialLogin';
 
 
 const Login = () => {
@@ -16,7 +17,7 @@ const Login = () => {
 
   const { signIn } = useAuth();
 
-  const [disabled, setDisabled] = useState(true);
+  // const [disabled, setDisabled] = useState(true);
 
   // 
   const handleShowPass = () => {
@@ -66,7 +67,7 @@ const Login = () => {
     console.log(captcha);
 
     if (validateCaptcha(captcha)) {
-      setDisabled(false)
+      // setDisabled(false)
     }
     else {
       alert('Your captcha is wrong')
@@ -93,8 +94,8 @@ const Login = () => {
               quasi. In deleniti eaque aut repudiandae et a id nisi.
             </p>
           </div>
-          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <form onSubmit={handleLogin} className="card-body">
+          <div className="card w-full max-w-sm shrink-0 ">
+            <form onSubmit={handleLogin} className="card-body bg-base-100 rounded-xl">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -120,10 +121,11 @@ const Login = () => {
                 <input onBlur={handleValidate} id='captcha' type="text" name="captcha" placeholder="Type the text above" className="input input-bordered" required />
               </div>
               <div className="form-control mt-6">
-                <button disabled={disabled} className="btn btn-primary">Login</button>
+                <button disabled={false} className="btn btn-primary">Login</button>
               </div>
             </form>
-            <p className='text-center mb-4'><small>New Here ? <Link to='/signUp' className='font-bold'>Create an Account</Link></small></p>
+            <p className='text-center my-4'><small>New Here ? <Link to='/signUp' className='font-bold'>Create an Account</Link></small></p>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

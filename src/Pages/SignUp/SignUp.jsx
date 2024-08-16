@@ -3,12 +3,15 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
 
   const { register, reset, handleSubmit, formState: { errors } } = useForm()
 
   const { createUser, updateUserProfile } = useAuth();
+
+  const axiosPublic = useAxiosPublic();
 
   const navigate = useNavigate();
 
@@ -25,15 +28,26 @@ const SignUp = () => {
       .then(res => {
         updateUserProfile(name, photoUrl)
           .then(() => {
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Created User Successfully",
-              showConfirmButton: false,
-              timer: 1500
-            });
-            navigate('/')
-            reset();
+            // Create user entry in the database
+            const userInfo = {
+              name: name,
+              email: email,
+            }
+
+            axiosPublic.post('/users', userInfo)
+              .then(res => {
+                if (res.data.insertedId) {
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Created User Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  navigate('/')
+                  reset();
+                }
+              })
           })
           .catch(err => {
             console.error(err);

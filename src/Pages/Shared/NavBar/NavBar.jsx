@@ -25,9 +25,9 @@ const NavBar = () => {
     <NavLink to="/order/dessert"><li><a>Order</a></li></NavLink>
     <NavLink to="/menu"><li><a>Our Menu</a></li></NavLink>
     <NavLink to="/ourShop"><li><a>Our Shop</a></li></NavLink>
-    <NavLink to="/ourShop"><li><button className="btn btn-outline text-white">
+    <NavLink to="/dashboard/cart"><li><button className="btn btn-outline text-white">
       <ShoppingCart />
-      <div className="badge badge-secondary">+{cart?.length}</div>
+      <div className="badge badge-secondary">+{cart?.length || 0}</div>
     </button></li></NavLink>
 
   </>

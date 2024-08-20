@@ -1,12 +1,13 @@
 import { Book, CalendarCheck, CalendarRange, Contact, HomeIcon, House, Menu, MessageCircleHeart, ShoppingBag, ShoppingCart, User, Utensils, Wallet } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
 
   // TODO: get is admin value from the database
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="flex">

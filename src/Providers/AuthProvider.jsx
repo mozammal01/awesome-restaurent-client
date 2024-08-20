@@ -37,7 +37,8 @@ const AuthProvider = ({ children }) => {
 
   const updateUserProfile = (name, photo) => {
     return updateProfile(auth.currentUser, {
-      displayName: name, photoURL: photo
+      displayName: name,
+      photoURL: photo
     });
   }
 
@@ -47,6 +48,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser)
       if (currentUser) {
+
         // get token and store client
         const email = currentUser.email;
         const userInfo = { email }
@@ -56,10 +58,9 @@ const AuthProvider = ({ children }) => {
               localStorage.setItem('access-token', res.data.token)
             }
           })
-
       }
       else {
-        // TODO: remove token (if token stored in the client side: local storage, caching, in memory )
+        // remove token (if token stored in the client side: local storage, caching, in memory )
         localStorage.removeItem('access-token');
       }
       setLoading(false)

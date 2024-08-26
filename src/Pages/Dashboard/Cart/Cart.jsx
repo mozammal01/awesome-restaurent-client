@@ -2,6 +2,7 @@ import { Trash } from "lucide-react";
 import useCart from "../../../hooks/useCart";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
 
@@ -45,7 +46,9 @@ const Cart = () => {
       <div className="flex justify-evenly my-10 items-center">
         <h2 className="text-5xl">Items: {cart.length}</h2>
         <h2 className="text-5xl">Total Price: {totalPrice}</h2>
-        <button className="btn btn-outline text-blue-600">Pay</button>
+        <button disabled={!cart.length} className="btn bg-orange-400 px-8 font-bold">
+          <Link to='/dashboard/payment'>Pay</Link>
+        </button>
       </div>
       <div className="overflow-x-auto">
         <table className="table">

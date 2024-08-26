@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
-import Theme from "../../../Theme";
+// import Theme from "../../../Theme";
 import { ShoppingCart } from "lucide-react";
 import useCart from "../../../hooks/useCart";
 
@@ -67,7 +67,7 @@ const NavBar = () => {
           {NavLinks}
         </ul>
         <div className="gap-6 flex items-center">
-          <Theme></Theme>
+          {/* <Theme></Theme> */}
           {
             user ?
               <>

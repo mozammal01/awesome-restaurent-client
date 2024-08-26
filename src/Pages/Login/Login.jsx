@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import { loadCaptchaEnginge, LoadCanvasTemplate } from 'react-simple-captcha';
 import useAuth from '../../hooks/useAuth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -62,18 +62,18 @@ const Login = () => {
       })
 
   }
-  const handleValidate = (e) => {
-    const captcha = e.target.value;
-    console.log(captcha);
+  // const handleValidate = (e) => {
+  //   const captcha = e.target.value;
+  //   console.log(captcha);
 
-    if (validateCaptcha(captcha)) {
-      // setDisabled(false)
-    }
-    else {
-      alert('Your captcha is wrong')
-    }
+  //   if (validateCaptcha(captcha)) {
+  //     // setDisabled(false)
+  //   }
+  //   else {
+  //     alert('Your captcha is wrong')
+  //   }
 
-  }
+  // }
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -118,7 +118,7 @@ const Login = () => {
                 <label className="label">
                   <LoadCanvasTemplate />
                 </label>
-                <input onBlur={handleValidate} id='captcha' type="text" name="captcha" placeholder="Type the text above" className="input input-bordered" required />
+                {/* <input onBlur={handleValidate} id='captcha' type="text" name="captcha" placeholder="Type the text above" className="input input-bordered" required /> */}
               </div>
               <div className="form-control mt-6">
                 <button disabled={false} className="btn btn-primary">Login</button>

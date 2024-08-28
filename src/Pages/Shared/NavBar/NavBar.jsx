@@ -3,12 +3,15 @@ import useAuth from "../../../hooks/useAuth";
 // import Theme from "../../../Theme";
 import { ShoppingCart } from "lucide-react";
 import useCart from "../../../hooks/useCart";
+import useAdmin from "../../../hooks/useAdmin";
 
 const NavBar = () => {
 
-  const [cart] = useCart();
-
   const { user, logOut } = useAuth();
+
+  const [isAdmin] = useAdmin();
+
+  const [cart] = useCart();
 
   // 
   const handleLogOut = () => {
@@ -20,16 +23,29 @@ const NavBar = () => {
   }
 
   const NavLinks = <>
-    <NavLink to="/"><li><a>Home</a></li></NavLink>
-    <NavLink to="/contuctUs"><li><a>Contuct Us</a></li></NavLink>
-    <NavLink to="/order/dessert"><li><a>Order</a></li></NavLink>
-    <NavLink to="/menu"><li><a>Our Menu</a></li></NavLink>
-    <NavLink to="/ourShop"><li><a>Our Shop</a></li></NavLink>
-    <NavLink to="/dashboard/cart"><li><button className="btn btn-outline text-white">
-      <ShoppingCart />
-      <div className="badge badge-secondary">+{cart?.length || 0}</div>
-    </button></li></NavLink>
+    <div className="gap-5 flex items-center justify-end">
+      <NavLink to="/"><li>Home</li></NavLink>
+      <NavLink to="/contuctUs"><li>Contuct Us</li></NavLink>
+      <NavLink to="/order/dessert"><li>Order</li></NavLink>
+      <NavLink to="/menu"><li>Our Menu</li></NavLink>
+      {/* {
+        user ? isAdmin ? <NavLink to="/dashboard/adminHome"><li>Dashboard</li></NavLink> :
+          <NavLink to="/dashboard/userHome"><li>Dashboard</li></NavLink> : ''
+      } */}
 
+      {
+        user && isAdmin && <NavLink to="/dashboard/adminHome"><li>Dashboard</li></NavLink>
+      }
+      {
+        user && !isAdmin && <NavLink to="/dashboard/userHome"><li>Dashboard</li></NavLink>
+      }
+
+      <NavLink to="/dashboard/cart"><li><button className="btn btn-outline text-white">
+        <ShoppingCart />
+        <div className="badge badge-secondary">+{cart?.length || 0}</div>
+      </button></li></NavLink>
+
+    </div>
   </>
   return (
     <div className="navbar max-w-screen-xl bg-black bg-opacity-50 text-white fixed z-10">

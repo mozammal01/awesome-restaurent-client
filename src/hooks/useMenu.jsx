@@ -11,7 +11,7 @@ const useMenu = () => {
   // const [loading, setLoading] = useState(true);
 
   // useEffect(() => {
-  //   fetch('http://localhost:4000/menu')
+  //   fetch('https://awesome-restaurent-server.vercel.app/menu')
   //     .then(res => res.json())
   //     .then(data => {
   //       setMenu(data);
@@ -19,7 +19,7 @@ const useMenu = () => {
   //     })
   // }, [])
 
-  const {data: menu = [], isPending: loading, refetch} = useQuery({
+  const { data: menu = [], isPending: loading, refetch } = useQuery({
     queryKey: ['menu'],
     queryFn: async () => {
       const res = await axiosPublic.get('/menu')

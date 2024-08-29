@@ -7,9 +7,9 @@ import useAdmin from "../../../hooks/useAdmin";
 
 const NavBar = () => {
 
-  const { user, logOut } = useAuth();
+  const { user, logOut, loading } = useAuth();
 
-  const [isAdmin] = useAdmin();
+  const [isAdmin] = useAdmin({ enabled: !loading && !!user?.email, user });
 
   const [cart] = useCart();
 
@@ -40,7 +40,7 @@ const NavBar = () => {
         user && !isAdmin && <NavLink to="/dashboard/userHome"><li>Dashboard</li></NavLink>
       }
 
-      <NavLink to="/dashboard/cart"><li><button className="btn btn-outline text-white">
+      <NavLink to="/dashboard/cart"><li><button className="btn btn-outline text-white me-3">
         <ShoppingCart />
         <div className="badge badge-secondary">+{cart?.length || 0}</div>
       </button></li></NavLink>
@@ -78,7 +78,7 @@ const NavBar = () => {
           </span>
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center ms-32 hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-bold">
           {NavLinks}
         </ul>
@@ -87,10 +87,12 @@ const NavBar = () => {
           {
             user ?
               <>
-                <p>{user?.displayName}</p>
+                <p className="font-semibold">{user?.displayName}</p>
                 <button onClick={handleLogOut} className="btn">Log Out</button>
               </> :
-              <Link to='/login'><p className="btn">Login</p></Link>
+              <div>
+                <Link to='/login'><p className="btn">Login</p></Link>
+              </div>
           }
         </div>
       </div>

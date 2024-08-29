@@ -115,7 +115,7 @@ const AddItems = () => {
           </div>
 
           {/* Submit */}
-          <button className="btn btn-warning">Add Item <Utensils /></button>
+          <button className="btn bg-orange-400">Add Item <Utensils /></button>
         </form>
       </div>
     </div>

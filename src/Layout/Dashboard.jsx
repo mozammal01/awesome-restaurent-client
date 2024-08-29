@@ -2,12 +2,14 @@ import { Book, CalendarCheck, CalendarRange, Contact, HomeIcon, House, Menu, Mes
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
   const [cart] = useCart();
 
-  // TODO: get is admin value from the database
-  const [isAdmin] = useAdmin();
+  const { user, loading } = useAuth();
+
+  const [isAdmin] = useAdmin({ enabled: !loading && !!user?.email, user });
 
   return (
     <div className="flex">

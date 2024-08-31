@@ -7,7 +7,7 @@ import useAuth from "../hooks/useAuth";
 const Dashboard = () => {
   const [cart] = useCart();
 
-  const { user, loading } = useAuth();
+  const { user, loading, theme } = useAuth();
 
   const [isAdmin] = useAdmin({ enabled: !loading && !!user?.email, user });
 
@@ -15,7 +15,7 @@ const Dashboard = () => {
     <div className="flex">
 
       {/* Dashboard Side bar */}
-      <div className="w-60 min-h-screen bg-orange-400">
+      <div className={theme === 'forest' ? 'w-60 min-h-screen bg-orange-400 text-white': 'w-60 min-h-screen bg-orange-400 '}>
 
         <ul className="menu space-y-2 w-11/12 mx-auto font-bold mt-20">
 

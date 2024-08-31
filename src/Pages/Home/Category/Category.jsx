@@ -30,7 +30,7 @@ const Category = () => {
           clickable: true,
         }}
         modules={[FreeMode, Pagination]}
-        className="mySwiper my-20"
+        className="mySwiper md:my-20"
       >
         <SwiperSlide className='min-h-96'>
           <img src={slide1} />
@@ -70,8 +70,8 @@ const Category = () => {
         </SwiperSlide>
       </Swiper>
 
-      <div className='my-40 banner-bg py-40 bg-fixed'>
-        <div className='w-3/4 border-2 px-20 space-y-4 py-10 mx-auto bg-white text-center text-black'>
+      <div className='md:my-40 my-10 banner-bg py-40 bg-fixed'>
+        <div className='w-3/4 border-2 px-5 md:px-20 space-y-4 py-10 mx-auto bg-white text-center text-black'>
           <h2 className="text-3xl font-bold ">Awesome Restaurent</h2>
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos deserunt magnam pariatur perferendis, doloremque asperiores necessitatibus earum dolorum corporis quod nisi non reprehenderit aut, nam impedit iure nostrum exercitationem nesciunt?</p>
         </div>

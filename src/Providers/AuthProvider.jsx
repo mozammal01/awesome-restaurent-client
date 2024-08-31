@@ -9,6 +9,7 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [theme, setTheme] = useState('light');
   const [loading, setLoading] = useState(true);
 
   const googleProvider = new GoogleAuthProvider();
@@ -42,6 +43,17 @@ const AuthProvider = ({ children }) => {
     });
   }
 
+  const handleChangeTheme = () => {
+    setTheme(theme === 'forest' ? 'light' : 'forest');
+    // initially set the theme and "listen" for changes to apply them to the HTML tag
+  }
+
+
+  useEffect(() => {
+    document.querySelector('html').setAttribute('data-theme', theme);
+
+  }, [theme]);
+
 
 
   useEffect(() => {
@@ -74,12 +86,14 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     user,
+    theme,
     loading,
     createUser,
     signIn,
     googleSignIn,
     logOut,
     updateUserProfile,
+    handleChangeTheme,
 
   }
 

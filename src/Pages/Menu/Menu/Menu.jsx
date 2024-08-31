@@ -19,6 +19,9 @@ const Menu = () => {
   const soup = menu.filter(item => item.category === 'soup');
 
   if (dessert.length > 4) {
+
+    const dessertShow = dessert.slice(0,4);
+    console.log()
     console.log('Congrats');
   }
 

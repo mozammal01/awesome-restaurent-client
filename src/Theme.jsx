@@ -4,11 +4,12 @@
 // function Theme() {
 //   const [theme, setTheme] = useState('light');
 //   const toggleTheme = () => {
-//     // setTheme(theme === 'dark' ? 'light' : 'dark');
+//     setTheme(theme === 'black' ? 'light' : 'black');
 //   };
 //   // initially set the theme and "listen" for changes to apply them to the HTML tag
 //   useEffect(() => {
 //     document.querySelector('html').setAttribute('data-theme', theme);
+
 //   }, [theme]);
 //   return (
 //     <label className="swap swap-rotate">

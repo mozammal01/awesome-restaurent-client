@@ -28,6 +28,8 @@ const AdminHome = () => {
 
   const { users, menu, orders, revenue } = stats;
 
+  const totalRevenue = parseInt(revenue)
+
 
   // Order Stat
   const { data: chartData = [] } = useQuery({
@@ -93,7 +95,7 @@ const AdminHome = () => {
             <Wallet size={40}></Wallet>
           </div>
           <div>
-            <div className="stat-value">${revenue}</div>
+            <div className="stat-value">${totalRevenue}</div>
             <div className="font-bold">Revenue</div>
           </div>
         </div>

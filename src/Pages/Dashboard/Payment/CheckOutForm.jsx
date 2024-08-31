@@ -62,6 +62,16 @@ const CheckOutForm = () => {
     }
 
 
+    const payment = {
+      email: user?.email,
+      price: totalPrice,
+      transactionId,
+      date: new Date(), // utc date convert. use moment js to
+      cartIds: cart.map(item => item._id),
+      menuItemIds: cart.map(item => item.menuId),
+      status: 'Pending'
+    }
+
     // Confirm payment
     const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
@@ -84,22 +94,7 @@ const CheckOutForm = () => {
       if (paymentIntent.status === 'succeeded') {
         setTransactionId(paymentIntent.id)
         console.log('Transaction ID: ', transactionId);
-      }
-    }
-
-
-    // Now save the payment in the database
-    const payment = {
-      email: user?.email,
-      price: totalPrice,
-      transactionId,
-      date: new Date(), // utc date convert. use moment js to
-      cartIds: cart.map(item => item._id),
-      menuItemIds: cart.map(item => item.menuId),
-      status: 'Pending'
-    }
-
-    const res = await axiosPublic.post('/payments', payment)
+        const res = await axiosPublic.post('/payments', payment)
     console.log('Response from payments', res.data);
     if (res.data.result.insertedId) {
       refetch();
@@ -110,8 +105,16 @@ const CheckOutForm = () => {
         showConfirmButton: false,
         timer: 1500
       });
-      navigate('/dashboard/paymentHistory')
     }
+        navigate('/dashboard/paymentHistory')
+      }
+    }
+
+
+    // Now save the payment in the database
+    
+
+    
 
 
 

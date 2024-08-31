@@ -44,7 +44,7 @@ const Order = () => {
 
 
         {/* Dessert */}
-        <TabPanel>
+        <TabPanel className='text-center'>
           <OrderTab items={dessert}></OrderTab>
         </TabPanel>
 

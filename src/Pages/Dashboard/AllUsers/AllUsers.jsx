@@ -70,7 +70,7 @@ const AllUsers = () => {
         <table className="table">
           {/* head */}
           <thead>
-            <tr className="uppercase bg-orange-400">
+            <tr className="uppercase bg-orange-400 text-white">
               <th></th>
               <th>Name</th>
               <th>Email</th>
